@@ -21,21 +21,27 @@ const Navbar = () => {
         backgroundFilter: "blur(10px)",
         duration: 1,
         ease: "power1.inOut",
-      }
+      },
     );
   }, []);
 
   return (
     <nav>
       <div>
-        <a href="#home" className="flex items-center gap-2">
-          <img src="/images/logo.png" alt="logo" />
+        <a href="/" className="flex items-center gap-2">
+          <img
+            src="/images/logo.svg"
+            alt="Logo"
+            className="w-8 h-8"
+            width="32"
+            height="32"
+          />
           <p>Velvet Pour</p>
         </a>
         <ul>
           {navLinks.map((item) => (
             <li key={item.id}>
-              <a href={`${item.id}`}>{item.title}</a>
+              <a href={`#${item.id}`}>{item.title}</a>
             </li>
           ))}
         </ul>

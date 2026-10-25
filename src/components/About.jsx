@@ -1,7 +1,6 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
-import React from "react";
+import { SplitText } from "gsap/SplitText";
 
 const About = () => {
   useGSAP(() => {
@@ -32,7 +31,7 @@ const About = () => {
           ease: "power1.inOut",
           stagger: 0.04,
         },
-        "-=0.5"
+        "-=0.5",
       );
   }, []);
   return (
@@ -66,17 +65,29 @@ const About = () => {
       <div className="top-grid">
         <div className="md:col-span-3">
           <div className="noisy">
-            <img src="/images/abt1.png" />
+            <img
+              src="/images/abt1.webp"
+              alt="Bartender preparing a cocktail"
+              fetchPriority="low"
+            />
           </div>
         </div>
         <div className="md:col-span-6">
           <div className="noisy">
-            <img src="/images/abt2.png" />
+            <img
+              src="/images/abt2.webp"
+              alt="Signature DAN Cocktail drink"
+              fetchPriority="low"
+            />
           </div>
         </div>
         <div className="md:col-span-3">
           <div className="noisy">
-            <img src="/images/abt5.png" />
+            <img
+              src="/images/abt5.webp"
+              alt="Fresh cocktail ingredients"
+              fetchPriority="low"
+            />
           </div>
         </div>
       </div>
@@ -84,12 +95,20 @@ const About = () => {
       <div className="bottom-grid">
         <div className="md:col-span-8">
           <div className="noisy">
-            <img src="/images/abt2.png" />
+            <img
+              src="/images/abt2.webp"
+              alt="Close-up of premium cocktail"
+              fetchPriority="low"
+            />
           </div>
         </div>
         <div className="md:col-span-4">
           <div className="noisy">
-            <img src="/images/abt4.png" />
+            <img
+              src="/images/abt4.webp"
+              alt="Modern cocktail bar atmosphere"
+              fetchPriority="low"
+            />
           </div>
         </div>
       </div>

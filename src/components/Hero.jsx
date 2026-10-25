@@ -1,12 +1,11 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SplitText } from "gsap/all";
+import { SplitText } from "gsap/SplitText";
 import { useRef } from "react";
 import { useMediaQuery } from "react-responsive";
 
 const Hero = () => {
-  const videoRef = useRef();
-
+  const videoRef = useRef(null);
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   useGSAP(() => {
@@ -49,9 +48,11 @@ const Hero = () => {
     const startValue = isMobile ? "top 50%" : "center 60%";
     const endValue = isMobile ? "120% top" : "bottom top";
 
-    let tl = gsap.timeline({
+    const video = videoRef.current;
+
+    const tl = gsap.timeline({
       scrollTrigger: {
-        trigger: "video",
+        trigger: video,
         start: startValue,
         end: endValue,
         scrub: true,
@@ -59,24 +60,28 @@ const Hero = () => {
       },
     });
 
-    videoRef.current.onloadedmetadata = () => {
-      tl.to(videoRef.current, {
-        currentTime: videoRef.current.duration,
-      });
+    const setupScrub = () => {
+      tl.to(video, { currentTime: video.duration, ease: "none" });
     };
+
+    if (video.readyState >= 1) {
+      setupScrub();
+    } else {
+      video.onloadedmetadata = setupScrub;
+    }
   }, []);
   return (
     <>
       <section id="hero" className="noisy">
         <h1 className="title">MOJITO</h1>
         <img
-          src="/images/hero-left-leaf.png"
-          alt="left-leaf"
+          src="/images/hero-left-leaf.webp"
+          alt="Fresh green mint leaf decoration left"
           className="left-leaf"
         />
         <img
-          src="/images/hero-right-leaf.png"
-          alt="right-leaf"
+          src="/images/hero-right-leaf.webp"
+          alt="Fresh green mint leaf decoration right"
           className="right-leaf"
         />
 
@@ -84,13 +89,13 @@ const Hero = () => {
           <div className="content">
             <div className="space-y-5 hidden md:block">
               <p>Cool. Crisp. Classic.</p>
-              <p className="subtitle">
+              <div className="subtitle font-modern-negra text-6xl text-yellow max-w-xl">
                 Sip the Spirit <br /> of Summer
-              </p>
+              </div>
             </div>
 
             <div className="view-cocktails">
-              <p className="subtitle">
+              <p className="subtitle text-left">
                 Every cocktail on your menu is crafted with care, using only the
                 freshest ingredients and a passion for perfecting every pour.
               </p>

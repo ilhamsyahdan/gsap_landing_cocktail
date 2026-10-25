@@ -1,6 +1,6 @@
 import { useGSAP } from "@gsap/react";
-import { openingHours, socials } from "../../constants";
-import { SplitText } from "gsap/all";
+import { openingHours, socials, storeInfo } from "../../constants";
+import { SplitText } from "gsap/SplitText";
 import gsap from "gsap";
 
 const Contact = () => {
@@ -40,33 +40,33 @@ const Contact = () => {
           duration: 1,
           ease: "power1.out",
         },
-        "<"
+        "<",
       );
   }, []);
   return (
     <footer id="contact">
       <img
-        src="/images/footer-right-leaf.png"
+        src="/images/footer-right-leaf.webp"
         alt="leaf-right"
         id="f-right-leaf"
       />
       <img
-        src="/images/footer-left-leaf.png"
+        src="/images/footer-left-leaf.webp"
         alt="leaf-left"
         id="f-left-leaf"
       />
 
       <div className="content">
-        <h2>Where Find Us</h2>
+        <h2>{storeInfo.heading}</h2>
 
         <div>
           <h3>Visit our bar</h3>
-          <p>Jalan Mampang Prapatan XV, Jakarta Selatan</p>
+          <p>{storeInfo.address}</p>
         </div>
 
         <div>
           <h3>Contact Us</h3>
-          <p>(+62)87883781027</p>
+          <p>{storeInfo.contact.phone}</p>
         </div>
 
         <div>

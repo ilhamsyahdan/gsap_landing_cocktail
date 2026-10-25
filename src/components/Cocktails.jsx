@@ -26,10 +26,14 @@ const Cocktails = () => {
   }, []);
   return (
     <section id="cocktails" className="noisy">
-      <img src="/images/cocktail-left-leaf.png" alt="l-leaf" id="c-left-leaf" />
       <img
-        src="/images/cocktail-right-leaf.png"
-        alt="r-leaf"
+        src="/images/cocktail-left-leaf.webp"
+        alt="Decorative mint leaf left"
+        id="c-left-leaf"
+      />
+      <img
+        src="/images/cocktail-right-leaf.webp"
+        alt="Decorative mint leaf right"
         id="c-right-leaf"
       />
       <div className="list">

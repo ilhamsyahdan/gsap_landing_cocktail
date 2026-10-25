@@ -33,7 +33,7 @@ const Menu = () => {
       {
         opacity: 1,
         duration: 1.5,
-      }
+      },
     );
 
     gsap.fromTo(
@@ -47,7 +47,7 @@ const Menu = () => {
         xPercent: 0,
         duration: 1,
         ease: "power1.inOut",
-      }
+      },
     );
 
     gsap.fromTo(
@@ -60,7 +60,7 @@ const Menu = () => {
         opacity: 100,
         yPercent: 0,
         ease: "power1.inOut",
-      }
+      },
     );
     gsap.fromTo(
       ".details p",
@@ -73,27 +73,27 @@ const Menu = () => {
         yPercent: 0,
         duration: 0.5,
         ease: "power1.inOut",
-      }
+      },
     );
   }, [currentIndex]);
   return (
-    <section id="menu" aria-labelledby="menu-heading">
+    <section id="menu">
       <img
-        src="/images/slider-left-leaf.png"
+        src="/images/slider-left-leaf.webp"
         alt="left-leaf"
         id="m-left-leaf"
       />
       <img
-        src="/images/slider-right-leaf.png"
+        src="/images/slider-right-leaf.webp"
         alt="right-leaf"
         id="m-right-leaf"
       />
 
-      <h2 id="menu-heading" className="sr-only">
+      <div id="menu-heading" className="sr-only">
         Cocktail Menu
-      </h2>
+      </div>
 
-      <nav className="cocktail-tabs" aria-label="Cocktail Navigation">
+      <div className="cocktail-tabs">
         {sliderLists.map((item, index) => {
           const isActive = index === currentIndex;
 
@@ -111,7 +111,7 @@ const Menu = () => {
             </button>
           );
         })}
-      </nav>
+      </div>
 
       <div className="content">
         <div className="arrows">
@@ -120,22 +120,14 @@ const Menu = () => {
             onClick={() => nextSlide(currentIndex - 1)}
           >
             <span>{prevCocktail.name}</span>
-            <img
-              src="/images/right-arrow.png"
-              alt="right-arrow"
-              aria-hidden="true"
-            />
+            <img src="/images/right-arrow.png" alt="right-arrow" />
           </button>
           <button
             className="text-left cursor-pointer"
             onClick={() => nextSlide(currentIndex + 1)}
           >
             <span>{nextCocktail.name}</span>
-            <img
-              src="/images/left-arrow.png"
-              alt="left-arrow"
-              aria-hidden="true"
-            />
+            <img src="/images/left-arrow.png" alt="left-arrow" />
           </button>
         </div>
 

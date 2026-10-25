@@ -1,12 +1,12 @@
-import { ScrollTrigger, SplitText } from "gsap/all";
+import { lazy, Suspense } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+
 import Navbar from "./components/Navbar";
-import gsap from "gsap";
 import Hero from "./components/Hero";
-import Cocktails from "./components/Cocktails";
-import About from "./components/About";
-import Art from "./components/Art";
-import Menu from "./components/Menu";
-import Contact from "./components/Contact";
+
+const BelowFold = lazy(() => import("./components/BelowFold"));
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -15,11 +15,9 @@ const App = () => {
     <main>
       <Navbar />
       <Hero />
-      <Cocktails />
-      <About />
-      <Art />
-      <Menu />
-      <Contact />
+      <Suspense fallback={<div style={{ minHeight: "100vh" }} />}>
+        <BelowFold />
+      </Suspense>
     </main>
   );
 };
